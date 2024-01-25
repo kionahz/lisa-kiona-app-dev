@@ -1,6 +1,5 @@
 import streamlit as st
 from helpers import turtle_with_speech_bubble, map_bg
-# Todo: always update the helpers file to work with the current version
 
 st.set_page_config(
     page_title="PIErats - Productivity Island Expedition",
@@ -16,6 +15,13 @@ speech_turtle = [
      }
 ]
 
+# call the function to display the turtle, speech bubble and the first text inside the speech bubble
+turtle_with_speech_bubble(speech_turtle[0]['text'])
+
+
+# onclick="{button["execution"]}" command code to execute a button with html
+# -> we have to figure out how to open further pages with click on a button
+
 # Quest Buttons and Button to open backpack
 buttons = [
     {"label": "🏳️", "top": "77%", "left": "39%", "font-size": "45px"},  # Button M1 Q1
@@ -28,9 +34,6 @@ buttons = [
     {"label": "🔒", "top": "33%", "left": "60%", "font-size": "45px"},  # Button M3 expl
     # {"label": "🔒", "top": "70%", "left": "45%", "font-size": "45px"},  # Button M3 Q2
 ]
-
-# call the function to display the turtle, speech bubble and the first text inside the speech bubble
-turtle_with_speech_bubble(speech_turtle[0]['text'])
 
 # call the function to display the map as the background image and insert the buttons on top of it
 map_bg(buttons)
