@@ -1,6 +1,6 @@
 import streamlit as st
 import base64
-
+from helpers import turtle_with_speechbubble
 
 st.set_page_config(
     page_title="PIErats - Productivity Island Expedition",
@@ -22,31 +22,8 @@ speech_turtle = [
      }
 ]
 
-
-def turtle_speechbubble(speech_turtle, blue_bg, speechbubble_img):  # calls variables
-    blue_bg_image = open(blue_bg, "rb").read()  # reads the blue square bg image
-    speechbubble_image = open(speechbubble_img, "rb").read()  # reads the speech bubble image
-
-    # Convert the images to base64, so it can be embedded with HTML and CSS code
-    blue_bg_image_base64 = base64.b64encode(blue_bg_image).decode('utf-8')
-    blue_bg_image_url = f"data:image/png;base64,{blue_bg_image_base64}"
-    speechbubble_image_base64 = base64.b64encode(speechbubble_image).decode('utf-8')
-    speechbubble_image_url = f"data:image/png;base64, {speechbubble_image_base64}"
-
-    st.markdown(
-        f""" 
-        <div style="position: fixed; top: 80px; left: 0px">
-            <img src="{blue_bg_image_url}" alt="Map" width="1800"> </div>
-        <div style="position: fixed; top:90px; left:10px">
-            <img src="{speechbubble_image_url}" alt="Speechbubble" width="500"> </div>
-        <div style="position: fixed; top: 105px; left: 10px; font-size: 20px; text-align: left; max-width: 
-        500px; padding: 50px; color: black "> {speech_turtle[0]["text"]} 
-        </div> """,
-        unsafe_allow_html=True
-    )
-
-
-turtle_speechbubble(speech_turtle, blue_bg, speechbubble_img)
+# call the function to display the turtle, speech bubble and the first text inside the speech bubble
+turtle_with_speechbubble(speech_turtle[0]['text'])
 
 
 # Function to display the play buttons as an overlay on the map
@@ -119,3 +96,7 @@ buttons = [
 
 # Call the function with the parameters
 map_q1(bg_image_map, turtle_character_image, buttons, backpack_icon_image)
+
+
+
+
