@@ -3,23 +3,27 @@ import base64
 
 
 # function to display the turtle with an empty speech bubble
-def turtle_with_speechbubble(text):
+def turtle_with_speech_bubble(text):
     blue_bg_image = open("AD_Pictures/blue_bg.png", "rb").read()  # reads the blue square bg image
     turtle_image = open("AD_Pictures/turtle.png", "rb").read()  # reads the image of Shelly
-    speechbubble_image = open("AD_Pictures/speech_bubble.png", "rb").read()  # reads the speech bubble image
+    speech_bubble_image = open("AD_Pictures/speech_bubble.png", "rb").read()  # reads the speech bubble image
 
     # Convert the images to base64, so it can be embedded with HTML and CSS code
     blue_bg_image_base64 = base64.b64encode(blue_bg_image).decode('utf-8')
     blue_bg_image_url = f"data:image/png;base64,{blue_bg_image_base64}"
-    speechbubble_image_base64 = base64.b64encode(speechbubble_image).decode('utf-8')
-    speechbubble_image_url = f"data:image/png;base64, {speechbubble_image_base64}"
+    turtle_image_base64 = base64.b64encode(turtle_image).decode('utf-8')
+    turtle_image_url = f"data:image/png;base64, {turtle_image_base64}"
+    speech_bubble_image_base64 = base64.b64encode(speech_bubble_image).decode('utf-8')
+    speech_bubble_image_url = f"data:image/png;base64, {speech_bubble_image_base64}"
 
     st.markdown(
         f""" 
             <div style="position: fixed; top: 80px; left: 0px">
                 <img src="{blue_bg_image_url}" alt="Map" width="1800"> </div>
+            <div style="position: fixed; bottom: 40px; left: 10px;"> 
+                <img src="{turtle_image_url}" alt="Turtle" width="300"> </div>
             <div style="position: fixed; top:90px; left:10px">
-                <img src="{speechbubble_image_url}" alt="Speechbubble" width="500"> </div>
+                <img src="{speech_bubble_image_url}" alt="Speech bubble" width="500"> </div>
             <div style="position: fixed; top: 105px; left: 10px; font-size: 20px; text-align: left; max-width: 
             500px; padding: 50px; color: black "> {text} 
             </div> """,
@@ -28,16 +32,14 @@ def turtle_with_speechbubble(text):
 
 
 # function to display the map as the background image
-def map_bg():
+def map_bg(buttons):
 
     bg_image = open("AD_Pictures/island.png", "rb").read()  # reads the bg map
-    backpack_image = open(backpack_icon_image, "rb").read()  # reads the image of the backpack
+    backpack_image = open("AD_Pictures/backpack.png", "rb").read()  # reads the image of the backpack
 
     # Convert the images to base64, so it can be embedded with HTML and CSS code
     bg_image_base64 = base64.b64encode(bg_image).decode('utf-8')
     bg_image_url = f"data:image/png;base64,{bg_image_base64}"
-    turtle_image_base64 = base64.b64encode(turtle_image).decode('utf-8')
-    turtle_image_url = f"data:image/png;base64, {turtle_image_base64}"
     backpack_image_base64 = base64.b64encode(backpack_image).decode('utf-8')
     backpack_image_url = f"data:image/png;base64, {backpack_image_base64}"
 
@@ -70,9 +72,7 @@ def map_bg():
         <div style="position:fixed; bottom: 10px; right: 10px;">
             <img src="{backpack_image_url}" alt="Backpack" width="230"> </div> 
             <button style="{inventory_button_style}"> Inventory </button> 
-            <div style="position: fixed; bottom: 40px; left: 10px;"> <img src="{turtle_image_url}" alt="Turtle" 
-            width="300">
-        </div>
         """,
         unsafe_allow_html=True
     )
+
