@@ -3,7 +3,6 @@ import os
 import threading
 import time
 
-
 # wait time to close page and open a new one.
 wait_second = 3.8
 
@@ -12,6 +11,7 @@ wait_second = 3.8
 def threadFunc():
     time.sleep(wait_second)
     os.system('taskkill /F /FI "WindowTitle eq Pierats - Productivity Island Expedition"')
+
 
 if 'page' in st.experimental_get_query_params():
     if st.experimental_get_query_params()['page'][0] == 'open_backpack':
