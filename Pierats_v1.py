@@ -108,7 +108,7 @@ def map_q1(bg_image_map, turtle_character_image, buttons, backpack_icon_image):
 buttons = [
     {"label": "🏳️", "top": "77%", "left": "39%", "font-size": "45px"},  # Button M1 Q1
     {"label": "🔒", "top": "68%", "left": "47%", "font-size": "45px"},  # Button M1 expl
-    {"label": "🔒", "top": "60%", "left": "54%", "font-size": "45px"}, # Button M1 Q2
+    {"label": "🔒", "top": "60%", "left": "54%", "font-size": "45px"},  # Button M1 Q2
     {"label": "🔒", "top": "53%", "left": "48%", "font-size": "45px"},  # Button M2 Q1
     {"label": "🔒", "top": "57%", "left": "38%", "font-size": "45px"},  # Button M2 expl
     {"label": "🔒", "top": "47%", "left": "43%", "font-size": "45px"},  # Button M2 Q2
@@ -119,7 +119,3 @@ buttons = [
 
 # Call the function with the parameters
 map_q1(bg_image_map, turtle_character_image, buttons, backpack_icon_image)
-
-
-
-
