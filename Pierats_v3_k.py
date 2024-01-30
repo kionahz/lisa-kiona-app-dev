@@ -1,5 +1,5 @@
 import streamlit as st
-from helpers import turtle_with_speech_bubble, map_bg
+from helpers_v2_l import turtle_with_speech_bubble, map_bg
 
 st.set_page_config(
     page_title="PIErats - Productivity Island Expedition",
