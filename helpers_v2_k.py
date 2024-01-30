@@ -64,7 +64,9 @@ def map_bg(buttons):
             <img src="{bg_image_url}" alt="Map" width="1200"> 
         """
         + "".join([
-            f'<button style="position: absolute; top: {button["top"]}; left: {button["left"]}; font-size: {button["font-size"]}; transform: translate(-50%, -50%); padding: 5px;">{button["label"]}</button>'
+            f'<button style="position: absolute; top: {button["top"]}; left: {button["left"]}; '
+            f'font-size: {button["font-size"]}; transform: translate(-50%, -50%); '
+            f'padding: 5px;" onclick="{button["onclick"]}">{button["label"]}</button>'
             for button in buttons])
         + f"""
         </div>
@@ -75,4 +77,13 @@ def map_bg(buttons):
         """,
         unsafe_allow_html=True
     )
+
+
+def click_m1_q1():
+    print('Button is clicked')
+
+
+    # onclick="{button["execution"]}" command code to execute a button with html
+    # -> we have to figure out how to open further pages with click on a button
+
 
