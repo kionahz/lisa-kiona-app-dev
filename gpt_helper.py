@@ -1,6 +1,5 @@
 import streamlit as st
 from helpers_v2_k import turtle_with_speech_bubble, map_bg, click_m1_q1
-# Todo: always update the helpers file to work with the current version
 
 st.set_page_config(
     page_title="PIErats - Productivity Island Expedition",
@@ -13,12 +12,8 @@ speech_turtle = [
     {"text": "Hey Sailor! Looks like you and your little brother stranded on a deserted island. Unfortunately, "
              "your boat has broken down and you need new equipment. As you explore the individual quests, "
              "you will find new materials and learn new things in order to survive and ultimately escape from the "
-             "island. Let's get started and begin with the first quest!"},
-     {"There are now a few things you need to do to ensure your survival. You have several possible tasks as options "
-      "that you can do now. But you can't do them all at once, so you have to prioritize. Which task do you start "
-      "with and which ones can you do later? Sort the tasks into an order. Start with the most important task at the "
-      "top and end with the least important task at the bottom."
-    }
+             "island. Let's get started and begin with the first quest!"
+     }
 ]
 
 
@@ -35,9 +30,10 @@ buttons = [
     # {"label": "🔒", "top": "70%", "left": "45%", "font-size": "3vw", "onclick": click_m1_q1},  # Button M3 Q2
 ]
 
-# call the function to display the turtle, speech bubble and the first text inside the speech bubble
-turtle_with_speech_bubble(speech_turtle[0]['text'])
+col1, col2 = st.columns([0.2, 0.8])
 
-# call the function to display the map as the background image and insert the buttons on top of it
-map_bg(buttons)
+with col1:
+    turtle_with_speech_bubble(speech_turtle[0]['text'])
 
+with col2:
+    map_bg(buttons)
