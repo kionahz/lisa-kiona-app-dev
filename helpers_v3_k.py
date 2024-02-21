@@ -3,7 +3,7 @@ import base64
 
 
 # function to display the turtle with an empty speech bubble
-def turtle_with_speech_bubble(text):
+def update_text(texts, current_text_index):
     blue_bg_image = open("AD_Pictures/blue_bg.png", "rb").read()  # reads the blue square bg image
     turtle_image = open("AD_Pictures/turtle.png", "rb").read()  # reads the image of Shelly
     speech_bubble_image = open("AD_Pictures/speech_bubble.png", "rb").read()  # reads the speech bubble image
@@ -16,24 +16,34 @@ def turtle_with_speech_bubble(text):
     speech_bubble_image_base64 = base64.b64encode(speech_bubble_image).decode('utf-8')
     speech_bubble_image_url = f"data:image/png;base64, {speech_bubble_image_base64}"
 
-    st.markdown(
-        f""" 
-            <div style="position: fixed; top: 0%; left: 0%">
-                <img src="{blue_bg_image_url}" alt="Map" width="200%"> </div>
-            <div style="position: fixed; bottom: 3%; left: 1%;"> 
-                <img src="{turtle_image_url}" alt="Turtle" width="30%"> </div>
-            <div style="position: fixed; top: 5%; left: 0%;">
-                <img src="{speech_bubble_image_url}" alt="Speech bubble" width="33%"> </div>
-            <div style="position: fixed; top: 8.5%; left: 0.5%; font-size: 1.5vw; text-align: left; max-width: 
-            32%; padding: 1%; color: black "> {text} 
-            </div> """,
-        unsafe_allow_html=True
-    )
+    if current_text_index < len(texts):
+        st.markdown(
+            f""" 
+                    <div style="position: fixed; top: 0%; left: 0%">
+                        <img src="{blue_bg_image_url}" alt="Map" width="200%"> </div>
+                    <div style="position: fixed; bottom: 3%; left: 1%;"> 
+                        <img src="{turtle_image_url}" alt="Turtle" width="30%"> </div>
+                    <div style="position: fixed; top: 5%; left: 0%;">
+                        <img src="{speech_bubble_image_url}" alt="Speech bubble" width="33%"> </div>
+                    <div style="position: fixed; top: 8.5%; left: 0.5%; font-size: 1.5vw; text-align: left; max-width: 
+                    32%; padding: 1%; color: black "> {texts[current_text_index]} 
+                    </div> """,
+            unsafe_allow_html=True
+        )
+
+
+def turtle_with_speech_bubble(texts):
+    if 'current_text_index' not in st.session_state:
+        st.session_state.current_text_index = 0
+
+    update_text(texts, st.session_state.current_text_index)
+
+    if st.session_state.current_text_index < len(texts):
+        st.button("Next", on_click=lambda: st.session_state.update(current_text_index=st.session_state.current_text_index + 1))
 
 
 # function to display the map as the background image
 def map_bg(buttons):
-
     bg_image = open("AD_Pictures/island.png", "rb").read()  # reads the bg map
     backpack_image = open("AD_Pictures/backpack.png", "rb").read()  # reads the image of the backpack
 
@@ -86,18 +96,19 @@ def click_m1_q1():
     # onclick="{button["execution"]}" command code to execute a button with html
     # -> we have to figure out how to open further pages with click on a button
 
+
 def eisenhower_bg():
-    old_page_image = open("AD_Pictures/em_empty.png", "rb").read()  # reads the image of the backpack
+    old_page_image = open("AD_Pictures/em_page.png", "rb").read()  # reads the image of the backpack
 
     # Convert the images to base64, so it can be embedded with HTML and CSS code
     old_page_image_base64 = base64.b64encode(old_page_image).decode('utf-8')
     old_page_image_url = f"data:image/png;base64,{old_page_image_base64}"
 
     st.markdown(
-       f"""
+        f"""
         <div style="position: fixed; top: 12%; left: 25%;">
             <img src="{old_page_image_url}" alt="Old Page" width="110%"></div>
         <button style="position: fixed; top: 14%; right: 0.5%; font-size: 4vw; transform: translate(-50%, -50%); padding: 1%;" >🏠</button>
         """,
-       unsafe_allow_html=True
+        unsafe_allow_html=True
     )

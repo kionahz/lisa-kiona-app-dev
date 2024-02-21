@@ -32,16 +32,19 @@ def turtle_speechbubble(speech_turtle, blue_bg, speechbubble_img):
 
     st.markdown(
         f""" 
-        <div style="position: fixed; top: 80px; left: 0px">
-            <img src="{blue_bg_image_url}" alt="Map" width="1800"> </div>
-        <div style="position: fixed; top:90px; left:10px">
-            <img src="{speechbubble_image_url}" alt="Speechbubble" width="500"> </div>
-        <div style="position: fixed; top: 105px; left: 10px; font-size: 30px; text-align: left; max-width: 
-        500px; padding: 50px; color: black "> {speech_turtle[0]["text"]} 
-        <button style="position: fixed; bottom: 10px; left: 450px; font-size: 50px; transform: translate(-50%, -50%); 
-        padding:5px;">🏠</button> </div> """,
+            <div style="position: fixed; top: 80px; left: 0px">
+                <img src="{blue_bg_image_url}" alt="Map" width="1800"> </div>
+            <div style="position: fixed; top:90px; left:10px">
+                <img src="{speechbubble_image_url}" alt="Speechbubble" width="500"> </div>
+            <div style="position: fixed; top: 105px; left: 10px; font-size: 30px; text-align: left; max-width: 
+            500px; padding: 50px; color: black "> {speech_turtle[0]["text"]} 
+            <button style="position: fixed; bottom: 10px; left: 450px; font-size: 50px; transform: translate(-50%, -50%); 
+            padding:5px;">🏠</button> </div> """,
         unsafe_allow_html=True
     )
+
+    if st.button("Home"):
+        st.switch_page("Pierats_v4_k.py")
 
 
 turtle_speechbubble(speech_turtle, blue_bg, speechbubble_img)
