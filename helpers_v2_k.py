@@ -87,7 +87,7 @@ def click_m1_q1():
     # -> we have to figure out how to open further pages with click on a button
 
 def eisenhower_bg():
-    old_page_image = open("AD_Pictures/em_page.png", "rb").read()  # reads the image of the backpack
+    old_page_image = open("AD_Pictures/em_empty.png", "rb").read()  # reads the image of the backpack
 
     # Convert the images to base64, so it can be embedded with HTML and CSS code
     old_page_image_base64 = base64.b64encode(old_page_image).decode('utf-8')
